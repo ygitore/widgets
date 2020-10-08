@@ -1,24 +1,25 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Accordion from './components/Accordion';
 
-function App() {
+const questions = [
+  {
+    title:'what is react?',
+    content:'react is front end javascript framework'
+  },
+  {
+    title:'how to create project in react?',
+    content:'in windows terminal or bash type npx create-react-app your app name'
+  },
+  {
+    title:'list some of hooks in react?',
+    content:'useState, useRef, useEffect,..'
+  }
+]
+const App = () => {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Accordion questions = {questions} />
     </div>
   );
 }
