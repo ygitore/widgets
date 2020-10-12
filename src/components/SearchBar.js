@@ -2,10 +2,11 @@ import Axios from 'axios'
 import React, { useEffect, useState } from 'react'
 
 const SearchBar = () => {
-    const [term, setTerm] = useState("")
+    const [term, setTerm] = useState('programming')
+    const [results, setResults] = useState([])
     useEffect(() => {
         const searchTerm = async () => {
-            await Axios.get('https://en.wikipedia.org/w/api.php', {
+           const {data} = await Axios.get('https://en.wikipedia.org/w/api.php', {
                 params:{
                     action:'query',
                     list:'search',
@@ -14,6 +15,7 @@ const SearchBar = () => {
                     srsearch: term
                 }
             })
+            setResults(data)
         }
         searchTerm()
     }, [term])
