@@ -15,13 +15,25 @@ const SearchBar = () => {
                     srsearch: term
                 }
             })
-            setResults(data)
+            setResults(data.query.search)
         }
         searchTerm()
     }, [term])
+    const renderedResults = () => {
+        const wikiResults = results.map(result => {
+            return (
+                <div key={result.pageid}>
+                    <h5>{result.title}</h5>
+                    <p>{result.snippet}</p>
+                </div>
+            )
+        })
+        return wikiResults
+    }
     return (
         <div>
             <input type="text" onChange={(e) => setTerm(e.target.value)} />
+            {renderedResults()}
         </div>
     )
 }
