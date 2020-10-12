@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 const Accordion = ({questions}) => {
     const [active, setActive] = useState(null)
@@ -16,6 +16,9 @@ const Accordion = ({questions}) => {
                         <p>{item.content}</p>
                     </div>
                 </div>
+    })
+    useEffect(() => {
+        console.log("first time only"+active)
     })
     return (
         <div>

@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import Accordion from './components/Accordion';
+import SearchBar from './components/SearchBar';
 
 const questions = [
   {
@@ -19,6 +20,7 @@ const questions = [
 const App = () => {
   return (
     <div className="App">
+      <SearchBar />
       <Accordion questions = {questions} />
     </div>
   );
