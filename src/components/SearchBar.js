@@ -17,14 +17,18 @@ const SearchBar = () => {
             })
             setResults(data.query.search)
         }
-        searchTerm()
+        setTimeout(() => {
+            if(term){
+                searchTerm()
+            }
+        }, 1000);
     }, [term])
     const renderedResults = () => {
         const wikiResults = results.map(result => {
             return (
                 <div key={result.pageid}>
                     <h5>{result.title}</h5>
-                    <p>{result.snippet}</p>
+                    <span dangerouslySetInnerHTML={{ __html:result.snippet}}></span>
                 </div>
             )
         })
