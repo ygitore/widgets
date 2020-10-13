@@ -17,13 +17,21 @@ const SearchBar = () => {
             })
             setResults(data.query.search)
         }
-        const timeoutId = setTimeout(() => {
-            if(term){
-                searchTerm()
+        if(term && !results.length)
+        {
+            searchTerm()
+        }
+        else
+        {
+            const timeoutId = setTimeout(() => {
+                if(term){
+                    searchTerm()
+                }
+            }, 1000);
+        
+            return () => {
+                clearTimeout(timeoutId)
             }
-        }, 1000);
-        return () => {
-            clearTimeout(timeoutId)
         }
     }, [term])
     const renderedResults = () => {
