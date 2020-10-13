@@ -17,11 +17,14 @@ const SearchBar = () => {
             })
             setResults(data.query.search)
         }
-        setTimeout(() => {
+        const timeoutId = setTimeout(() => {
             if(term){
                 searchTerm()
             }
         }, 1000);
+        return () => {
+            clearTimeout(timeoutId)
+        }
     }, [term])
     const renderedResults = () => {
         const wikiResults = results.map(result => {
