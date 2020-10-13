@@ -23,17 +23,17 @@ const SearchBar = () => {
         }
         else
         {
-            const timeoutId = setTimeout(() => {
-                if(term){
+            const timeoutId = setTimeout(() => { //store settimeout id for later use
+                if(term){ //if term is not empty
                     searchTerm()
                 }
             }, 1000);
-        
+            // we don't see 1 second any delay if we type without waiting for 1 second interval
             return () => {
                 clearTimeout(timeoutId)
             }
         }
-    }, [term])
+    }, [term, results.length])
     const renderedResults = () => {
         const wikiResults = results.map(result => {
             return (

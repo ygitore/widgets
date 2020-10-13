@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import Accordion from './components/Accordion';
+import Dropdown from './components/Dropdown';
 import SearchBar from './components/SearchBar';
 
 const questions = [
@@ -17,10 +18,28 @@ const questions = [
     content:'useState, useRef, useEffect,..'
   }
 ]
+const colors = [
+  {
+    color:'red',
+    id:1
+  },
+  {
+    color:'blue',
+    id:2
+  },
+  {
+    color:'yellow',
+    id:3
+  },
+  {
+    color:'white',
+    id:4
+  }
+]
 const App = () => {
   return (
     <div className="App">
-      <SearchBar />
+      <Dropdown colors={colors} />
       <Accordion questions = {questions} />
     </div>
   );
