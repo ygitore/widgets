@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import Accordion from './components/Accordion';
 import Dropdown from './components/Dropdown';
 import SearchBar from './components/SearchBar';
+import Translate from './components/Translate';
 
 const questions = [
   {
@@ -36,11 +37,38 @@ const colors = [
     id:4
   }
 ]
+const lang = [
+  {
+    label:"afrikaans",
+    val:'af'
+  },
+  {
+    label:"arebic",
+    val:'ar'
+  },
+  {
+    label:"hindi",
+    val:'hi'
+  },
+  {
+    label:"amharic",
+    val:'am'
+  },
+  {
+    label:"english",
+    val:'en'
+  }
+]
 const App = () => {
+  const [selectedLang, setSelectedLang] = useState("")
   return (
     <div className="App">
       <Dropdown colors={colors} />
       <Accordion questions = {questions} />
+      <Translate setSelectedLang={setSelectedLang} options={lang}/>
+      {
+        selectedLang
+      }
     </div>
   );
 }
