@@ -1,25 +1,22 @@
-import React, { Fragment, useState } from 'react'
+import React from 'react'
 
-const Dropdown = ({colors}) => {
-    const [selectedColor, setSelectedColor] = useState("")
-   
-    const renderedColors = colors.map((c, index)=>{
-        return <option key={c.color} value={c.color}>{c.color}</option>
+const Dropdown = ({label,selected,onOptionChange,options}) => {
+
+    const renderedColors = options.map((c, index)=>{
+        return <option key={c.val} value={c.val}>{c.label}</option>
     })
-    const onColorSelection = (e) => {
-        if(e.target.value !== "0"){
-            setSelectedColor(e.target.value)
-        }
+    const onOptionSelected = (e) => {
+        onOptionChange(e.target.value)
     }
     return (
-        <Fragment>
-            <select onChange={onColorSelection}>
-                <option value="0">Select color</option>
+        <>
+            <select onChange={onOptionSelected}>
+                <option value="0">{label}</option>
                 {renderedColors}
             </select>
             <br />
-            {selectedColor}
-        </Fragment>
+            {selected !== "0" ? selected : ""}
+        </>
     )
 }
 

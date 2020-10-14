@@ -21,54 +21,31 @@ const questions = [
 ]
 const colors = [
   {
-    color:'red',
-    id:1
+    label:'red',
+    val:'red'
   },
   {
-    color:'blue',
-    id:2
+    label:'yellow',
+    val:'yellow'
   },
   {
-    color:'yellow',
-    id:3
+    label:'blue',
+    val:'blue'
   },
   {
-    color:'white',
-    id:4
+    label:'green',
+    val:'green'
   }
 ]
-const lang = [
-  {
-    label:"afrikaans",
-    val:'af'
-  },
-  {
-    label:"arebic",
-    val:'ar'
-  },
-  {
-    label:"hindi",
-    val:'hi'
-  },
-  {
-    label:"amharic",
-    val:'am'
-  },
-  {
-    label:"english",
-    val:'en'
-  }
-]
+
 const App = () => {
-  const [selectedLang, setSelectedLang] = useState("")
+  const [color, setColor] = useState("")
+  
   return (
     <div className="App">
-      <Dropdown colors={colors} />
+      <Dropdown label="select color" selected = {color} onOptionChange = {setColor} options={colors} />
       <Accordion questions = {questions} />
-      <Translate setSelectedLang={setSelectedLang} options={lang}/>
-      {
-        selectedLang
-      }
+      <Translate />
     </div>
   );
 }
